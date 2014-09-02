@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cl.purchase.mapper.base.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.cl.purchase.model.base.Supplier" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="bi_no" property="biNo" jdbcType="VARCHAR" />
+    <result column="bi_address" property="biAddress" jdbcType="VARCHAR" />
+    <result column="bi_period" property="biPeriod" jdbcType="VARCHAR" />
+    <result column="tax_no" property="taxNo" jdbcType="VARCHAR" />
+    <result column="tax_payid" property="taxPayid" jdbcType="VARCHAR" />
+    <result column="tax_rate" property="taxRate" jdbcType="DECIMAL" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_no" property="bankNo" jdbcType="VARCHAR" />
+    <result column="bank_address" property="bankAddress" jdbcType="VARCHAR" />
+    <result column="supplier_type" property="supplierType" jdbcType="INTEGER" />
+    <result column="settle_type" property="settleType" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_person" property="updatePerson" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, province, city, address, postcode, contact, telephone, fax, email, website, 
+    bi_no, bi_address, bi_period, tax_no, tax_payid, tax_rate, bank_name, bank_no, bank_address, 
+    supplier_type, settle_type, is_delete, create_person, create_date, update_person, 
+    update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from p_supplier
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from p_supplier
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cl.purchase.model.base.Supplier" >
+    insert into p_supplier (id, name, province, 
+      city, address, postcode, 
+      contact, telephone, fax, 
+      email, website, bi_no, 
+      bi_address, bi_period, tax_no, 
+      tax_payid, tax_rate, bank_name, 
+      bank_no, bank_address, supplier_type, 
+      settle_type, is_delete, create_person, 
+      create_date, update_person, update_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, 
+      #{contact,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{biNo,jdbcType=VARCHAR}, 
+      #{biAddress,jdbcType=VARCHAR}, #{biPeriod,jdbcType=VARCHAR}, #{taxNo,jdbcType=VARCHAR}, 
+      #{taxPayid,jdbcType=VARCHAR}, #{taxRate,jdbcType=DECIMAL}, #{bankName,jdbcType=VARCHAR}, 
+      #{bankNo,jdbcType=VARCHAR}, #{bankAddress,jdbcType=VARCHAR}, #{supplierType,jdbcType=INTEGER}, 
+      #{settleType,jdbcType=INTEGER}, #{isDelete,jdbcType=BIT}, #{createPerson,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cl.purchase.model.base.Supplier" >
+    insert into p_supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="website != null" >
+        website,
+      </if>
+      <if test="biNo != null" >
+        bi_no,
+      </if>
+      <if test="biAddress != null" >
+        bi_address,
+      </if>
+      <if test="biPeriod != null" >
+        bi_period,
+      </if>
+      <if test="taxNo != null" >
+        tax_no,
+      </if>
+      <if test="taxPayid != null" >
+        tax_payid,
+      </if>
+      <if test="taxRate != null" >
+        tax_rate,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankNo != null" >
+        bank_no,
+      </if>
+      <if test="bankAddress != null" >
+        bank_address,
+      </if>
+      <if test="supplierType != null" >
+        supplier_type,
+      </if>
+      <if test="settleType != null" >
+        settle_type,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createPerson != null" >
+        create_person,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updatePerson != null" >
+        update_person,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="biNo != null" >
+        #{biNo,jdbcType=VARCHAR},
+      </if>
+      <if test="biAddress != null" >
+        #{biAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="biPeriod != null" >
+        #{biPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNo != null" >
+        #{taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPayid != null" >
+        #{taxPayid,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null" >
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null" >
+        #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAddress != null" >
+        #{bankAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierType != null" >
+        #{supplierType,jdbcType=INTEGER},
+      </if>
+      <if test="settleType != null" >
+        #{settleType,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createPerson != null" >
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePerson != null" >
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cl.purchase.model.base.Supplier" >
+    update p_supplier
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null" >
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="biNo != null" >
+        bi_no = #{biNo,jdbcType=VARCHAR},
+      </if>
+      <if test="biAddress != null" >
+        bi_address = #{biAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="biPeriod != null" >
+        bi_period = #{biPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNo != null" >
+        tax_no = #{taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPayid != null" >
+        tax_payid = #{taxPayid,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null" >
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null" >
+        bank_no = #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAddress != null" >
+        bank_address = #{bankAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierType != null" >
+        supplier_type = #{supplierType,jdbcType=INTEGER},
+      </if>
+      <if test="settleType != null" >
+        settle_type = #{settleType,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createPerson != null" >
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatePerson != null" >
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cl.purchase.model.base.Supplier" >
+    update p_supplier
+    set name = #{name,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      bi_no = #{biNo,jdbcType=VARCHAR},
+      bi_address = #{biAddress,jdbcType=VARCHAR},
+      bi_period = #{biPeriod,jdbcType=VARCHAR},
+      tax_no = #{taxNo,jdbcType=VARCHAR},
+      tax_payid = #{taxPayid,jdbcType=VARCHAR},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_no = #{bankNo,jdbcType=VARCHAR},
+      bank_address = #{bankAddress,jdbcType=VARCHAR},
+      supplier_type = #{supplierType,jdbcType=INTEGER},
+      settle_type = #{settleType,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=BIT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+<!-- 以上是为了节约开发时间，使用MyBatisGenerator生成的代码-->
+<!-- 以下是针对不足功能，添加的代码  -->
+  
+    <sql id="where">
+    	where b.is_delete=0
+    	<if test="name!=null and name!=''">
+    		and b.name like CONCAT(#{name},'%') 
+    	</if>
+    </sql>
+    <sql id="orderby">
+    	order by b.id desc 
+    </sql>
+    <select id="getSupplierTotalBySearch" parameterType="com.cl.purchase.model.base.SupplierSearchModel" resultType="java.lang.Integer">
+    	select count(0) 
+    	from p_supplier b
+    	<include refid="where"/>
+    </select>
+    <!-- 这个方法虽然没有显示的书写limit，但是也是分页的，利用的MyBatis的RowBounds -->
+    <select id="getSupplierListBySearch" parameterType="com.cl.purchase.model.base.SupplierSearchModel" resultMap="BaseResultMap">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from p_supplier b
+        <include refid="where"/>
+        <include refid="orderby"/>
+    </select>
+    <select id="getSupplierList" resultType="java.lang.Integer">
+	    select 
+	    <include refid="Base_Column_List" />
+	    from p_supplier b
+	    where b.is_delete=0
+    </select> 
+</mapper>
