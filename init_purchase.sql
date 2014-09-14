@@ -1,4 +1,4 @@
-﻿#数据初始化-商品字典表
+﻿#数据初始化-采购字典表
 insert into `p_dictionary`(`group`,`code`,`name`,sort_no,create_person,create_date)
 values
 ('supplier_type','1','经销',1,'system',now()),

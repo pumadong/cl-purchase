@@ -9,7 +9,7 @@
     <description>Dubbo provider配置</description>
 
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="commodity-app-server-center"/>
+    <dubbo:application name="purchase-app-server-center"/>
 
     <!-- 使用zookeeper注册中心暴露服务地址 -->
     <!-- 注册到这里 -->
@@ -17,15 +17,15 @@
 	<!-- 到这里调用 -->
 	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address.client}" id="zookeeperClient" />
 
-    <!-- 用dubbo协议在20800端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="30010" dispather="all" threadpool="cached" threads="5000"/>
-    <dubbo:service interface="com.cl.commodity.api.ICommodityBaseApiService" ref="commodityBaseApiServiceImpl"
-                   version="1.0" registry="zookeeperService" owner="cl-commodity"/>
+    <!-- 用dubbo协议在30030端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="30030" dispather="all" threadpool="cached" threads="5000"/>
+    <dubbo:service interface="com.cl.purchase.api.IPurchaseBaseApiService" ref="purchaseBaseApiServiceImpl"
+                   version="1.0" registry="zookeeperService" owner="cl-purchase"/>
  
     <!-- 和本地bean一样实现服务 -->
-    <bean id="commodityBaseApiServiceImpl" class="com.cl.commodity.api.impl.CommodityBaseApiServiceImpl"/>
+    <bean id="purchaseBaseApiServiceImpl" class="com.cl.purchase.api.impl.PurchaseBaseApiServiceImpl"/>
                  
     <!--提供hessian，用于跨语言支持:jboss端口 contextpath，必须和包启动的上下文根+servelt的路径一致-->
-    <!-- <dubbo:protocol name="hessian" contextpath="commodity/hessian" port="30011" server="servlet" threadpool="cached"
+    <!-- <dubbo:protocol name="hessian" contextpath="purchase/hessian" port="30031" server="servlet" threadpool="cached"
                     threads="5000"/> -->
 </beans>
