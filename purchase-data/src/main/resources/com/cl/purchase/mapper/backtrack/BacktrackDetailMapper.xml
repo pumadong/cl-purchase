@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.cl.purchase.model.backtrack.BacktrackDetail" >
     <id column="product_no" property="productNo" jdbcType="VARCHAR" />
     <result column="backtrack_no" property="backtrackNo" jdbcType="VARCHAR" />
-    <result column="backtrack_quality" property="backtrackQuality" jdbcType="INTEGER" />
-    <result column="storage_quality" property="storageQuality" jdbcType="INTEGER" />
-    <result column="storage_normal_quality" property="storageNormalQuality" jdbcType="INTEGER" />
-    <result column="storage_broken_quality" property="storageBrokenQuality" jdbcType="INTEGER" />
+    <result column="backtrack_quality" property="backtrackQuality" jdbcType="SMALLINT" />
+    <result column="storage_quality" property="storageQuality" jdbcType="SMALLINT" />
+    <result column="storage_normal_quality" property="storageNormalQuality" jdbcType="SMALLINT" />
+    <result column="storage_broken_quality" property="storageBrokenQuality" jdbcType="SMALLINT" />
     <result column="backtrack_price" property="backtrackPrice" jdbcType="DECIMAL" />
     <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
@@ -31,13 +31,15 @@
   </delete>
   <insert id="insert" parameterType="com.cl.purchase.model.backtrack.BacktrackDetail" >
     insert into p_backtrack_detail (product_no, backtrack_no, backtrack_quality, 
-      storage_quality, storage_normal_quality, storage_broken_quality, 
-      backtrack_price, create_person, create_date, 
-      update_person, update_date)
-    values (#{productNo,jdbcType=VARCHAR}, #{backtrackNo,jdbcType=VARCHAR}, #{backtrackQuality,jdbcType=INTEGER}, 
-      #{storageQuality,jdbcType=INTEGER}, #{storageNormalQuality,jdbcType=INTEGER}, #{storageBrokenQuality,jdbcType=INTEGER}, 
-      #{backtrackPrice,jdbcType=DECIMAL}, #{createPerson,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP})
+      storage_quality, storage_normal_quality, 
+      storage_broken_quality, backtrack_price, 
+      create_person, create_date, update_person, 
+      update_date)
+    values (#{productNo,jdbcType=VARCHAR}, #{backtrackNo,jdbcType=VARCHAR}, #{backtrackQuality,jdbcType=SMALLINT}, 
+      #{storageQuality,jdbcType=SMALLINT}, #{storageNormalQuality,jdbcType=SMALLINT}, 
+      #{storageBrokenQuality,jdbcType=SMALLINT}, #{backtrackPrice,jdbcType=DECIMAL}, 
+      #{createPerson,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.cl.purchase.model.backtrack.BacktrackDetail" >
     insert into p_backtrack_detail
@@ -84,16 +86,16 @@
         #{backtrackNo,jdbcType=VARCHAR},
       </if>
       <if test="backtrackQuality != null" >
-        #{backtrackQuality,jdbcType=INTEGER},
+        #{backtrackQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageQuality != null" >
-        #{storageQuality,jdbcType=INTEGER},
+        #{storageQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageNormalQuality != null" >
-        #{storageNormalQuality,jdbcType=INTEGER},
+        #{storageNormalQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageBrokenQuality != null" >
-        #{storageBrokenQuality,jdbcType=INTEGER},
+        #{storageBrokenQuality,jdbcType=SMALLINT},
       </if>
       <if test="backtrackPrice != null" >
         #{backtrackPrice,jdbcType=DECIMAL},
@@ -119,16 +121,16 @@
         backtrack_no = #{backtrackNo,jdbcType=VARCHAR},
       </if>
       <if test="backtrackQuality != null" >
-        backtrack_quality = #{backtrackQuality,jdbcType=INTEGER},
+        backtrack_quality = #{backtrackQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageQuality != null" >
-        storage_quality = #{storageQuality,jdbcType=INTEGER},
+        storage_quality = #{storageQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageNormalQuality != null" >
-        storage_normal_quality = #{storageNormalQuality,jdbcType=INTEGER},
+        storage_normal_quality = #{storageNormalQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageBrokenQuality != null" >
-        storage_broken_quality = #{storageBrokenQuality,jdbcType=INTEGER},
+        storage_broken_quality = #{storageBrokenQuality,jdbcType=SMALLINT},
       </if>
       <if test="backtrackPrice != null" >
         backtrack_price = #{backtrackPrice,jdbcType=DECIMAL},
@@ -151,10 +153,10 @@
   <update id="updateByPrimaryKey" parameterType="com.cl.purchase.model.backtrack.BacktrackDetail" >
     update p_backtrack_detail
     set backtrack_no = #{backtrackNo,jdbcType=VARCHAR},
-      backtrack_quality = #{backtrackQuality,jdbcType=INTEGER},
-      storage_quality = #{storageQuality,jdbcType=INTEGER},
-      storage_normal_quality = #{storageNormalQuality,jdbcType=INTEGER},
-      storage_broken_quality = #{storageBrokenQuality,jdbcType=INTEGER},
+      backtrack_quality = #{backtrackQuality,jdbcType=SMALLINT},
+      storage_quality = #{storageQuality,jdbcType=SMALLINT},
+      storage_normal_quality = #{storageNormalQuality,jdbcType=SMALLINT},
+      storage_broken_quality = #{storageBrokenQuality,jdbcType=SMALLINT},
       backtrack_price = #{backtrackPrice,jdbcType=DECIMAL},
       create_person = #{createPerson,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},

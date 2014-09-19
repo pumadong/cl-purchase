@@ -22,8 +22,8 @@
     <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
     <result column="bank_no" property="bankNo" jdbcType="VARCHAR" />
     <result column="bank_address" property="bankAddress" jdbcType="VARCHAR" />
-    <result column="supplier_type" property="supplierType" jdbcType="INTEGER" />
-    <result column="settle_type" property="settleType" jdbcType="INTEGER" />
+    <result column="supplier_type" property="supplierType" jdbcType="TINYINT" />
+    <result column="settle_type" property="settleType" jdbcType="TINYINT" />
     <result column="is_delete" property="isDelete" jdbcType="BIT" />
     <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
@@ -63,8 +63,8 @@
       #{email,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{biNo,jdbcType=VARCHAR}, 
       #{biAddress,jdbcType=VARCHAR}, #{biPeriod,jdbcType=VARCHAR}, #{taxNo,jdbcType=VARCHAR}, 
       #{taxPayid,jdbcType=VARCHAR}, #{taxRate,jdbcType=DECIMAL}, #{bankName,jdbcType=VARCHAR}, 
-      #{bankNo,jdbcType=VARCHAR}, #{bankAddress,jdbcType=VARCHAR}, #{supplierType,jdbcType=INTEGER}, 
-      #{settleType,jdbcType=INTEGER}, #{isDelete,jdbcType=BIT}, #{createPerson,jdbcType=VARCHAR}, 
+      #{bankNo,jdbcType=VARCHAR}, #{bankAddress,jdbcType=VARCHAR}, #{supplierType,jdbcType=TINYINT}, 
+      #{settleType,jdbcType=TINYINT}, #{isDelete,jdbcType=BIT}, #{createPerson,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -215,10 +215,10 @@
         #{bankAddress,jdbcType=VARCHAR},
       </if>
       <if test="supplierType != null" >
-        #{supplierType,jdbcType=INTEGER},
+        #{supplierType,jdbcType=TINYINT},
       </if>
       <if test="settleType != null" >
-        #{settleType,jdbcType=INTEGER},
+        #{settleType,jdbcType=TINYINT},
       </if>
       <if test="isDelete != null" >
         #{isDelete,jdbcType=BIT},
@@ -298,10 +298,10 @@
         bank_address = #{bankAddress,jdbcType=VARCHAR},
       </if>
       <if test="supplierType != null" >
-        supplier_type = #{supplierType,jdbcType=INTEGER},
+        supplier_type = #{supplierType,jdbcType=TINYINT},
       </if>
       <if test="settleType != null" >
-        settle_type = #{settleType,jdbcType=INTEGER},
+        settle_type = #{settleType,jdbcType=TINYINT},
       </if>
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=BIT},
@@ -342,8 +342,8 @@
       bank_name = #{bankName,jdbcType=VARCHAR},
       bank_no = #{bankNo,jdbcType=VARCHAR},
       bank_address = #{bankAddress,jdbcType=VARCHAR},
-      supplier_type = #{supplierType,jdbcType=INTEGER},
-      settle_type = #{settleType,jdbcType=INTEGER},
+      supplier_type = #{supplierType,jdbcType=TINYINT},
+      settle_type = #{settleType,jdbcType=TINYINT},
       is_delete = #{isDelete,jdbcType=BIT},
       create_person = #{createPerson,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
@@ -351,36 +351,4 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  
-<!-- 以上是为了节约开发时间，使用MyBatisGenerator生成的代码-->
-<!-- 以下是针对不足功能，添加的代码  -->
-  
-    <sql id="where">
-    	where b.is_delete=0
-    	<if test="name!=null and name!=''">
-    		and b.name like CONCAT(#{name},'%') 
-    	</if>
-    </sql>
-    <sql id="orderby">
-    	order by b.id desc 
-    </sql>
-    <select id="getSupplierTotalBySearch" parameterType="com.cl.purchase.model.base.SupplierSearchModel" resultType="java.lang.Integer">
-    	select count(0) 
-    	from p_supplier b
-    	<include refid="where"/>
-    </select>
-    <!-- 这个方法虽然没有显示的书写limit，但是也是分页的，利用的MyBatis的RowBounds -->
-    <select id="getSupplierListBySearch" parameterType="com.cl.purchase.model.base.SupplierSearchModel" resultMap="BaseResultMap">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_supplier b
-        <include refid="where"/>
-        <include refid="orderby"/>
-    </select>
-    <select id="getSupplierList" resultType="java.lang.Integer">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_supplier b
-	    where b.is_delete=0
-    </select> 
 </mapper>

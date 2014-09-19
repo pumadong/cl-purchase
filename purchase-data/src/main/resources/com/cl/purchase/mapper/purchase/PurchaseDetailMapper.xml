@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.cl.purchase.model.purchase.PurchaseDetail" >
     <id column="product_no" property="productNo" jdbcType="VARCHAR" />
     <result column="purchase_no" property="purchaseNo" jdbcType="VARCHAR" />
-    <result column="purchase_quality" property="purchaseQuality" jdbcType="INTEGER" />
-    <result column="storage_quality" property="storageQuality" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="purchase_quality" property="purchaseQuality" jdbcType="SMALLINT" />
+    <result column="storage_quality" property="storageQuality" jdbcType="SMALLINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="purchase_price" property="purchasePrice" jdbcType="DECIMAL" />
     <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
@@ -32,8 +32,8 @@
       storage_quality, status, purchase_price, 
       create_person, create_date, update_person, 
       update_date)
-    values (#{productNo,jdbcType=VARCHAR}, #{purchaseNo,jdbcType=VARCHAR}, #{purchaseQuality,jdbcType=INTEGER}, 
-      #{storageQuality,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{purchasePrice,jdbcType=DECIMAL}, 
+    values (#{productNo,jdbcType=VARCHAR}, #{purchaseNo,jdbcType=VARCHAR}, #{purchaseQuality,jdbcType=SMALLINT}, 
+      #{storageQuality,jdbcType=SMALLINT}, #{status,jdbcType=TINYINT}, #{purchasePrice,jdbcType=DECIMAL}, 
       #{createPerson,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR}, 
       #{updateDate,jdbcType=TIMESTAMP})
   </insert>
@@ -79,13 +79,13 @@
         #{purchaseNo,jdbcType=VARCHAR},
       </if>
       <if test="purchaseQuality != null" >
-        #{purchaseQuality,jdbcType=INTEGER},
+        #{purchaseQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageQuality != null" >
-        #{storageQuality,jdbcType=INTEGER},
+        #{storageQuality,jdbcType=SMALLINT},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="purchasePrice != null" >
         #{purchasePrice,jdbcType=DECIMAL},
@@ -111,13 +111,13 @@
         purchase_no = #{purchaseNo,jdbcType=VARCHAR},
       </if>
       <if test="purchaseQuality != null" >
-        purchase_quality = #{purchaseQuality,jdbcType=INTEGER},
+        purchase_quality = #{purchaseQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageQuality != null" >
-        storage_quality = #{storageQuality,jdbcType=INTEGER},
+        storage_quality = #{storageQuality,jdbcType=SMALLINT},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="purchasePrice != null" >
         purchase_price = #{purchasePrice,jdbcType=DECIMAL},
@@ -140,9 +140,9 @@
   <update id="updateByPrimaryKey" parameterType="com.cl.purchase.model.purchase.PurchaseDetail" >
     update p_purchase_detail
     set purchase_no = #{purchaseNo,jdbcType=VARCHAR},
-      purchase_quality = #{purchaseQuality,jdbcType=INTEGER},
-      storage_quality = #{storageQuality,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
+      purchase_quality = #{purchaseQuality,jdbcType=SMALLINT},
+      storage_quality = #{storageQuality,jdbcType=SMALLINT},
+      status = #{status,jdbcType=TINYINT},
       purchase_price = #{purchasePrice,jdbcType=DECIMAL},
       create_person = #{createPerson,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},

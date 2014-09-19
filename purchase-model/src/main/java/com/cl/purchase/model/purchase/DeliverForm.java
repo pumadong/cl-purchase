@@ -9,7 +9,7 @@ public class DeliverForm {
 
     private Integer warehouseId;
 
-    private Integer status;
+    private Byte status;
 
     private String deliverPerson;
 
@@ -51,11 +51,11 @@ public class DeliverForm {
         this.warehouseId = warehouseId;
     }
 
-    public Integer getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 

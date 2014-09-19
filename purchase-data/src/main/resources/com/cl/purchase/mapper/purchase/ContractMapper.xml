@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.cl.purchase.model.purchase.Contract" >
     <id column="no" property="no" jdbcType="VARCHAR" />
     <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
-    <result column="contract_type" property="contractType" jdbcType="INTEGER" />
+    <result column="contract_type" property="contractType" jdbcType="TINYINT" />
     <result column="validate_date_begin" property="validateDateBegin" jdbcType="TIMESTAMP" />
     <result column="validate_date_end" property="validateDateEnd" jdbcType="TIMESTAMP" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
     <result column="update_person" property="updatePerson" jdbcType="VARCHAR" />
@@ -32,9 +32,9 @@
       validate_date_begin, validate_date_end, 
       status, create_person, create_date, 
       update_person, update_date)
-    values (#{no,jdbcType=VARCHAR}, #{supplierId,jdbcType=INTEGER}, #{contractType,jdbcType=INTEGER}, 
+    values (#{no,jdbcType=VARCHAR}, #{supplierId,jdbcType=INTEGER}, #{contractType,jdbcType=TINYINT}, 
       #{validateDateBegin,jdbcType=TIMESTAMP}, #{validateDateEnd,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER}, #{createPerson,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=TINYINT}, #{createPerson,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.cl.purchase.model.purchase.Contract" >
@@ -79,7 +79,7 @@
         #{supplierId,jdbcType=INTEGER},
       </if>
       <if test="contractType != null" >
-        #{contractType,jdbcType=INTEGER},
+        #{contractType,jdbcType=TINYINT},
       </if>
       <if test="validateDateBegin != null" >
         #{validateDateBegin,jdbcType=TIMESTAMP},
@@ -88,7 +88,7 @@
         #{validateDateEnd,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="createPerson != null" >
         #{createPerson,jdbcType=VARCHAR},
@@ -111,7 +111,7 @@
         supplier_id = #{supplierId,jdbcType=INTEGER},
       </if>
       <if test="contractType != null" >
-        contract_type = #{contractType,jdbcType=INTEGER},
+        contract_type = #{contractType,jdbcType=TINYINT},
       </if>
       <if test="validateDateBegin != null" >
         validate_date_begin = #{validateDateBegin,jdbcType=TIMESTAMP},
@@ -120,7 +120,7 @@
         validate_date_end = #{validateDateEnd,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="createPerson != null" >
         create_person = #{createPerson,jdbcType=VARCHAR},
@@ -140,46 +140,14 @@
   <update id="updateByPrimaryKey" parameterType="com.cl.purchase.model.purchase.Contract" >
     update p_contract
     set supplier_id = #{supplierId,jdbcType=INTEGER},
-      contract_type = #{contractType,jdbcType=INTEGER},
+      contract_type = #{contractType,jdbcType=TINYINT},
       validate_date_begin = #{validateDateBegin,jdbcType=TIMESTAMP},
       validate_date_end = #{validateDateEnd,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
       create_person = #{createPerson,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_person = #{updatePerson,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=TIMESTAMP}
     where no = #{no,jdbcType=VARCHAR}
   </update>
-  
-<!-- 以上是为了节约开发时间，使用MyBatisGenerator生成的代码-->
-<!-- 以下是针对不足功能，添加的代码  -->
-  
-    <sql id="where">
-    	<trim prefix="where" prefixOverrides="AND">
-	    	<if test="no!=null and no!=''">
-	    		and b.no like CONCAT(#{no},'%') 
-	    	</if>
-    	</trim>
-    </sql>
-    <sql id="orderby">
-    	order by b.update_date desc 
-    </sql>
-    <select id="getContractTotalBySearch" parameterType="com.cl.purchase.model.purchase.ContractSearchModel" resultType="java.lang.Integer">
-    	select count(0) 
-    	from p_contract b
-    	<include refid="where"/>
-    </select>
-    <!-- 这个方法虽然没有显示的书写limit，但是也是分页的，利用的MyBatis的RowBounds -->
-    <select id="getContractListBySearch" parameterType="com.cl.purchase.model.purchase.ContractSearchModel" resultMap="BaseResultMap">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_contract b
-        <include refid="where"/>
-        <include refid="orderby"/>
-    </select>
-    <select id="getContractList" resultType="java.lang.Integer">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_contract b
-    </select>  
 </mapper>

@@ -8,13 +8,13 @@ public class DeliverDetail {
 
     private String deliverNo;
 
-    private Integer deliverQuality;
+    private Short deliverQuality;
 
-    private Integer storageQuality;
+    private Short storageQuality;
 
-    private Integer storageNormalQuality;
+    private Short storageNormalQuality;
 
-    private Integer storageBrokenQuality;
+    private Short storageBrokenQuality;
 
     private BigDecimal purchasePrice;
 
@@ -42,35 +42,35 @@ public class DeliverDetail {
         this.deliverNo = deliverNo;
     }
 
-    public Integer getDeliverQuality() {
+    public Short getDeliverQuality() {
         return deliverQuality;
     }
 
-    public void setDeliverQuality(Integer deliverQuality) {
+    public void setDeliverQuality(Short deliverQuality) {
         this.deliverQuality = deliverQuality;
     }
 
-    public Integer getStorageQuality() {
+    public Short getStorageQuality() {
         return storageQuality;
     }
 
-    public void setStorageQuality(Integer storageQuality) {
+    public void setStorageQuality(Short storageQuality) {
         this.storageQuality = storageQuality;
     }
 
-    public Integer getStorageNormalQuality() {
+    public Short getStorageNormalQuality() {
         return storageNormalQuality;
     }
 
-    public void setStorageNormalQuality(Integer storageNormalQuality) {
+    public void setStorageNormalQuality(Short storageNormalQuality) {
         this.storageNormalQuality = storageNormalQuality;
     }
 
-    public Integer getStorageBrokenQuality() {
+    public Short getStorageBrokenQuality() {
         return storageBrokenQuality;
     }
 
-    public void setStorageBrokenQuality(Integer storageBrokenQuality) {
+    public void setStorageBrokenQuality(Short storageBrokenQuality) {
         this.storageBrokenQuality = storageBrokenQuality;
     }
 

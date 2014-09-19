@@ -1,7 +1,7 @@
 ﻿delete from `p_module` where name='采购中心';
 INSERT INTO `p_module`(id,name,flag,url,sort_no,create_person,create_date,update_person,update_date) 
 VALUES
-(4,'采购中心','pu','http://127.0.0.1:10007/purchase-server',40,'system',NOW(),'system',NOW())
+(4,'采购中心','pu','http://127.0.0.1:10008/purchase-server',40,'system',NOW(),'system',NOW())
 ;
 
 

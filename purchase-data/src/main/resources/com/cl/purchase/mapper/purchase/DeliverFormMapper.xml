@@ -5,7 +5,7 @@
     <id column="no" property="no" jdbcType="VARCHAR" />
     <result column="purchase_no" property="purchaseNo" jdbcType="VARCHAR" />
     <result column="warehouse_id" property="warehouseId" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="deliver_person" property="deliverPerson" jdbcType="VARCHAR" />
     <result column="deliver_date" property="deliverDate" jdbcType="TIMESTAMP" />
     <result column="confirm_person" property="confirmPerson" jdbcType="VARCHAR" />
@@ -36,7 +36,7 @@
       create_date, update_person, update_date
       )
     values (#{no,jdbcType=VARCHAR}, #{purchaseNo,jdbcType=VARCHAR}, #{warehouseId,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{deliverPerson,jdbcType=VARCHAR}, #{deliverDate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=TINYINT}, #{deliverPerson,jdbcType=VARCHAR}, #{deliverDate,jdbcType=TIMESTAMP}, 
       #{confirmPerson,jdbcType=VARCHAR}, #{confirmDate,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
       )
@@ -92,7 +92,7 @@
         #{warehouseId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="deliverPerson != null" >
         #{deliverPerson,jdbcType=VARCHAR},
@@ -130,7 +130,7 @@
         warehouse_id = #{warehouseId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="deliverPerson != null" >
         deliver_person = #{deliverPerson,jdbcType=VARCHAR},
@@ -163,7 +163,7 @@
     update p_deliver_form
     set purchase_no = #{purchaseNo,jdbcType=VARCHAR},
       warehouse_id = #{warehouseId,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
       deliver_person = #{deliverPerson,jdbcType=VARCHAR},
       deliver_date = #{deliverDate,jdbcType=TIMESTAMP},
       confirm_person = #{confirmPerson,jdbcType=VARCHAR},
@@ -174,36 +174,4 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP}
     where no = #{no,jdbcType=VARCHAR}
   </update>
-  
-<!-- 以上是为了节约开发时间，使用MyBatisGenerator生成的代码-->
-<!-- 以下是针对不足功能，添加的代码  -->
-  
-    <sql id="where">
-    	<trim prefix="where" prefixOverrides="AND">
-	    	<if test="no!=null and no!=''">
-	    		and b.no like CONCAT(#{no},'%') 
-	    	</if>
-    	</trim>
-    </sql>
-    <sql id="orderby">
-    	order by b.update_date desc 
-    </sql>
-    <select id="getDeliverFormTotalBySearch" parameterType="com.cl.purchase.model.purchase.DeliverFormSearchModel" resultType="java.lang.Integer">
-    	select count(0) 
-    	from p_deliver_form b
-    	<include refid="where"/>
-    </select>
-    <!-- 这个方法虽然没有显示的书写limit，但是也是分页的，利用的MyBatis的RowBounds -->
-    <select id="getDeliverFormListBySearch" parameterType="com.cl.purchase.model.purchase.DeliverFormSearchModel" resultMap="BaseResultMap">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_deliver_form b
-        <include refid="where"/>
-        <include refid="orderby"/>
-    </select>
-    <select id="getDeliverFormList" resultType="java.lang.Integer">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_deliver_form b
-    </select>    
 </mapper>

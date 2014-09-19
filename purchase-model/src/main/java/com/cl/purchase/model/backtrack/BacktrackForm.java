@@ -9,11 +9,11 @@ public class BacktrackForm {
 
     private Integer warehouseId;
 
-    private Integer status;
+    private Byte status;
 
-    private Integer backtrackType;
+    private Byte backtrackType;
 
-    private Integer commodityType;
+    private Byte commodityType;
 
     private String createPerson;
 
@@ -47,27 +47,27 @@ public class BacktrackForm {
         this.warehouseId = warehouseId;
     }
 
-    public Integer getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 
-    public Integer getBacktrackType() {
+    public Byte getBacktrackType() {
         return backtrackType;
     }
 
-    public void setBacktrackType(Integer backtrackType) {
+    public void setBacktrackType(Byte backtrackType) {
         this.backtrackType = backtrackType;
     }
 
-    public Integer getCommodityType() {
+    public Byte getCommodityType() {
         return commodityType;
     }
 
-    public void setCommodityType(Integer commodityType) {
+    public void setCommodityType(Byte commodityType) {
         this.commodityType = commodityType;
     }
 

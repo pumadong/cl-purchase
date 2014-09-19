@@ -44,9 +44,9 @@ public class Supplier {
 
     private String bankAddress;
 
-    private Integer supplierType;
+    private Byte supplierType;
 
-    private Integer settleType;
+    private Byte settleType;
 
     private Boolean isDelete;
 
@@ -218,19 +218,19 @@ public class Supplier {
         this.bankAddress = bankAddress;
     }
 
-    public Integer getSupplierType() {
+    public Byte getSupplierType() {
         return supplierType;
     }
 
-    public void setSupplierType(Integer supplierType) {
+    public void setSupplierType(Byte supplierType) {
         this.supplierType = supplierType;
     }
 
-    public Integer getSettleType() {
+    public Byte getSettleType() {
         return settleType;
     }
 
-    public void setSettleType(Integer settleType) {
+    public void setSettleType(Byte settleType) {
         this.settleType = settleType;
     }
 

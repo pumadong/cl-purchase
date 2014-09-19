@@ -8,11 +8,11 @@ public class PurchaseDetail {
 
     private String purchaseNo;
 
-    private Integer purchaseQuality;
+    private Short purchaseQuality;
 
-    private Integer storageQuality;
+    private Short storageQuality;
 
-    private Integer status;
+    private Byte status;
 
     private BigDecimal purchasePrice;
 
@@ -40,27 +40,27 @@ public class PurchaseDetail {
         this.purchaseNo = purchaseNo;
     }
 
-    public Integer getPurchaseQuality() {
+    public Short getPurchaseQuality() {
         return purchaseQuality;
     }
 
-    public void setPurchaseQuality(Integer purchaseQuality) {
+    public void setPurchaseQuality(Short purchaseQuality) {
         this.purchaseQuality = purchaseQuality;
     }
 
-    public Integer getStorageQuality() {
+    public Short getStorageQuality() {
         return storageQuality;
     }
 
-    public void setStorageQuality(Integer storageQuality) {
+    public void setStorageQuality(Short storageQuality) {
         this.storageQuality = storageQuality;
     }
 
-    public Integer getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 

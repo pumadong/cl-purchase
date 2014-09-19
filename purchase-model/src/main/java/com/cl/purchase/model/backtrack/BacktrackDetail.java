@@ -8,13 +8,13 @@ public class BacktrackDetail {
 
     private String backtrackNo;
 
-    private Integer backtrackQuality;
+    private Short backtrackQuality;
 
-    private Integer storageQuality;
+    private Short storageQuality;
 
-    private Integer storageNormalQuality;
+    private Short storageNormalQuality;
 
-    private Integer storageBrokenQuality;
+    private Short storageBrokenQuality;
 
     private BigDecimal backtrackPrice;
 
@@ -42,35 +42,35 @@ public class BacktrackDetail {
         this.backtrackNo = backtrackNo;
     }
 
-    public Integer getBacktrackQuality() {
+    public Short getBacktrackQuality() {
         return backtrackQuality;
     }
 
-    public void setBacktrackQuality(Integer backtrackQuality) {
+    public void setBacktrackQuality(Short backtrackQuality) {
         this.backtrackQuality = backtrackQuality;
     }
 
-    public Integer getStorageQuality() {
+    public Short getStorageQuality() {
         return storageQuality;
     }
 
-    public void setStorageQuality(Integer storageQuality) {
+    public void setStorageQuality(Short storageQuality) {
         this.storageQuality = storageQuality;
     }
 
-    public Integer getStorageNormalQuality() {
+    public Short getStorageNormalQuality() {
         return storageNormalQuality;
     }
 
-    public void setStorageNormalQuality(Integer storageNormalQuality) {
+    public void setStorageNormalQuality(Short storageNormalQuality) {
         this.storageNormalQuality = storageNormalQuality;
     }
 
-    public Integer getStorageBrokenQuality() {
+    public Short getStorageBrokenQuality() {
         return storageBrokenQuality;
     }
 
-    public void setStorageBrokenQuality(Integer storageBrokenQuality) {
+    public void setStorageBrokenQuality(Short storageBrokenQuality) {
         this.storageBrokenQuality = storageBrokenQuality;
     }
 

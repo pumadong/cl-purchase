@@ -13,7 +13,7 @@ public class PurchaseForm {
 
     private Integer purchaseType;
 
-    private Integer status;
+    private Byte status;
 
     private String approvePerson;
 
@@ -67,11 +67,11 @@ public class PurchaseForm {
         this.purchaseType = purchaseType;
     }
 
-    public Integer getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 

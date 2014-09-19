@@ -7,7 +7,7 @@
     <result column="contract_no" property="contractNo" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="purchase_type" property="purchaseType" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="approve_person" property="approvePerson" jdbcType="VARCHAR" />
     <result column="approve_date" property="approveDate" jdbcType="TIMESTAMP" />
     <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
@@ -36,7 +36,7 @@
       create_date, update_person, update_date
       )
     values (#{no,jdbcType=VARCHAR}, #{supplierId,jdbcType=INTEGER}, #{contractNo,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{purchaseType,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{purchaseType,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
       #{approvePerson,jdbcType=VARCHAR}, #{approveDate,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
       )
@@ -98,7 +98,7 @@
         #{purchaseType,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="approvePerson != null" >
         #{approvePerson,jdbcType=VARCHAR},
@@ -136,7 +136,7 @@
         purchase_type = #{purchaseType,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="approvePerson != null" >
         approve_person = #{approvePerson,jdbcType=VARCHAR},
@@ -165,7 +165,7 @@
       contract_no = #{contractNo,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       purchase_type = #{purchaseType,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
       approve_person = #{approvePerson,jdbcType=VARCHAR},
       approve_date = #{approveDate,jdbcType=TIMESTAMP},
       create_person = #{createPerson,jdbcType=VARCHAR},
@@ -174,36 +174,4 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP}
     where no = #{no,jdbcType=VARCHAR}
   </update>
-  
-<!-- 以上是为了节约开发时间，使用MyBatisGenerator生成的代码-->
-<!-- 以下是针对不足功能，添加的代码  -->
-  
-    <sql id="where">
-    	<trim prefix="where" prefixOverrides="AND">
-	    	<if test="no!=null and no!=''">
-	    		and b.no like CONCAT(#{no},'%') 
-	    	</if>
-    	</trim>
-    </sql>
-    <sql id="orderby">
-    	order by b.update_date desc 
-    </sql>
-    <select id="getPurchaseFormTotalBySearch" parameterType="com.cl.purchase.model.purchase.PurchaseFormSearchModel" resultType="java.lang.Integer">
-    	select count(0) 
-    	from p_purchase_form b
-    	<include refid="where"/>
-    </select>
-    <!-- 这个方法虽然没有显示的书写limit，但是也是分页的，利用的MyBatis的RowBounds -->
-    <select id="getPurchaseFormListBySearch" parameterType="com.cl.purchase.model.purchase.PurchaseFormSearchModel" resultMap="BaseResultMap">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_purchase_form b
-        <include refid="where"/>
-        <include refid="orderby"/>
-    </select>
-    <select id="getDeliverFormList" resultType="java.lang.Integer">
-	    select 
-	    <include refid="Base_Column_List" />
-	    from p_purchase_form b
-    </select>   
 </mapper>

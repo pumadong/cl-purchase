@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.cl.purchase.model.purchase.DeliverDetail" >
     <id column="product_no" property="productNo" jdbcType="VARCHAR" />
     <result column="deliver_no" property="deliverNo" jdbcType="VARCHAR" />
-    <result column="deliver_quality" property="deliverQuality" jdbcType="INTEGER" />
-    <result column="storage_quality" property="storageQuality" jdbcType="INTEGER" />
-    <result column="storage_normal_quality" property="storageNormalQuality" jdbcType="INTEGER" />
-    <result column="storage_broken_quality" property="storageBrokenQuality" jdbcType="INTEGER" />
+    <result column="deliver_quality" property="deliverQuality" jdbcType="SMALLINT" />
+    <result column="storage_quality" property="storageQuality" jdbcType="SMALLINT" />
+    <result column="storage_normal_quality" property="storageNormalQuality" jdbcType="SMALLINT" />
+    <result column="storage_broken_quality" property="storageBrokenQuality" jdbcType="SMALLINT" />
     <result column="purchase_price" property="purchasePrice" jdbcType="DECIMAL" />
     <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
@@ -31,13 +31,15 @@
   </delete>
   <insert id="insert" parameterType="com.cl.purchase.model.purchase.DeliverDetail" >
     insert into p_deliver_detail (product_no, deliver_no, deliver_quality, 
-      storage_quality, storage_normal_quality, storage_broken_quality, 
-      purchase_price, create_person, create_date, 
-      update_person, update_date)
-    values (#{productNo,jdbcType=VARCHAR}, #{deliverNo,jdbcType=VARCHAR}, #{deliverQuality,jdbcType=INTEGER}, 
-      #{storageQuality,jdbcType=INTEGER}, #{storageNormalQuality,jdbcType=INTEGER}, #{storageBrokenQuality,jdbcType=INTEGER}, 
-      #{purchasePrice,jdbcType=DECIMAL}, #{createPerson,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP})
+      storage_quality, storage_normal_quality, 
+      storage_broken_quality, purchase_price, create_person, 
+      create_date, update_person, update_date
+      )
+    values (#{productNo,jdbcType=VARCHAR}, #{deliverNo,jdbcType=VARCHAR}, #{deliverQuality,jdbcType=SMALLINT}, 
+      #{storageQuality,jdbcType=SMALLINT}, #{storageNormalQuality,jdbcType=SMALLINT}, 
+      #{storageBrokenQuality,jdbcType=SMALLINT}, #{purchasePrice,jdbcType=DECIMAL}, #{createPerson,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updatePerson,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.cl.purchase.model.purchase.DeliverDetail" >
     insert into p_deliver_detail
@@ -84,16 +86,16 @@
         #{deliverNo,jdbcType=VARCHAR},
       </if>
       <if test="deliverQuality != null" >
-        #{deliverQuality,jdbcType=INTEGER},
+        #{deliverQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageQuality != null" >
-        #{storageQuality,jdbcType=INTEGER},
+        #{storageQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageNormalQuality != null" >
-        #{storageNormalQuality,jdbcType=INTEGER},
+        #{storageNormalQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageBrokenQuality != null" >
-        #{storageBrokenQuality,jdbcType=INTEGER},
+        #{storageBrokenQuality,jdbcType=SMALLINT},
       </if>
       <if test="purchasePrice != null" >
         #{purchasePrice,jdbcType=DECIMAL},
@@ -119,16 +121,16 @@
         deliver_no = #{deliverNo,jdbcType=VARCHAR},
       </if>
       <if test="deliverQuality != null" >
-        deliver_quality = #{deliverQuality,jdbcType=INTEGER},
+        deliver_quality = #{deliverQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageQuality != null" >
-        storage_quality = #{storageQuality,jdbcType=INTEGER},
+        storage_quality = #{storageQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageNormalQuality != null" >
-        storage_normal_quality = #{storageNormalQuality,jdbcType=INTEGER},
+        storage_normal_quality = #{storageNormalQuality,jdbcType=SMALLINT},
       </if>
       <if test="storageBrokenQuality != null" >
-        storage_broken_quality = #{storageBrokenQuality,jdbcType=INTEGER},
+        storage_broken_quality = #{storageBrokenQuality,jdbcType=SMALLINT},
       </if>
       <if test="purchasePrice != null" >
         purchase_price = #{purchasePrice,jdbcType=DECIMAL},
@@ -151,10 +153,10 @@
   <update id="updateByPrimaryKey" parameterType="com.cl.purchase.model.purchase.DeliverDetail" >
     update p_deliver_detail
     set deliver_no = #{deliverNo,jdbcType=VARCHAR},
-      deliver_quality = #{deliverQuality,jdbcType=INTEGER},
-      storage_quality = #{storageQuality,jdbcType=INTEGER},
-      storage_normal_quality = #{storageNormalQuality,jdbcType=INTEGER},
-      storage_broken_quality = #{storageBrokenQuality,jdbcType=INTEGER},
+      deliver_quality = #{deliverQuality,jdbcType=SMALLINT},
+      storage_quality = #{storageQuality,jdbcType=SMALLINT},
+      storage_normal_quality = #{storageNormalQuality,jdbcType=SMALLINT},
+      storage_broken_quality = #{storageBrokenQuality,jdbcType=SMALLINT},
       purchase_price = #{purchasePrice,jdbcType=DECIMAL},
       create_person = #{createPerson,jdbcType=VARCHAR},
       create_date = #{createDate,jdbcType=TIMESTAMP},

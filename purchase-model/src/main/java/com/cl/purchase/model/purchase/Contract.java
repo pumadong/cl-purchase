@@ -7,13 +7,13 @@ public class Contract {
 
     private Integer supplierId;
 
-    private Integer contractType;
+    private Byte contractType;
 
     private Date validateDateBegin;
 
     private Date validateDateEnd;
 
-    private Integer status;
+    private Byte status;
 
     private String createPerson;
 
@@ -39,11 +39,11 @@ public class Contract {
         this.supplierId = supplierId;
     }
 
-    public Integer getContractType() {
+    public Byte getContractType() {
         return contractType;
     }
 
-    public void setContractType(Integer contractType) {
+    public void setContractType(Byte contractType) {
         this.contractType = contractType;
     }
 
@@ -63,11 +63,11 @@ public class Contract {
         this.validateDateEnd = validateDateEnd;
     }
 
-    public Integer getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 
